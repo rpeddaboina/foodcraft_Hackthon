@@ -1,0 +1,86 @@
+body {
+  background: #eee !important;
+  -webkit-font-smoothing: antialiased;
+}
+
+.wrapper{
+  width: 1170px;
+  padding: 0 0px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.card-container{
+  width: 60%;
+  margin: 0 auto;
+  position: relative;
+  top: 25px;
+}
+.card-body{
+  padding: 20px;
+}
+
+.card-header{
+  text-align: center;
+}
+
+.example-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.card-style{
+  height: 88vh;
+  background: #2b848e;
+  top: 25px;
+}
+
+.example-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.example-container > * {
+  width: 100%;
+}
+
+.bg-wrapper{
+  background-image:  url("https://www.foodcraftinstitute.org/wp-content/uploads/2017/08/ERF-jars.jpg");
+}
+
+
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.example-full-width {
+  width: 100%;
+}
+
+.inner-card{
+  height: 40vh;
+  background: #fff;
+  top: 10em;
+  margin: 0 auto;
+  width: 33vw;
+}
+
+.fa-style{
+  font-size: 8em;
+  width: 27%;
+  color: green;
+  margin: 0 auto;
+}
+
+.icon-block{
+  margin: 0 auto;
+  text-align: center;
+}
+
+.reg-success-info{
+  padding: 25px;
+  text-align: center;
+  margin: 0 auto;
+}

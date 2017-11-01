@@ -1,0 +1,71 @@
+<div class="bg-wrapper">
+  <div class="wrapper">
+    <mat-card class="card-style">
+      <div *ngIf="loaderFlag" style=" text-align: center;margin: 0 auto;padding-left: 31em;"><mat-spinner></mat-spinner></div>
+        <section class="header">
+              <h4>Please fill in the details below to sign up for the course of your choice.</h4>
+        </section>
+
+            <mat-card class="inner-card ">
+
+                <div class="row">
+                  <div class="col-md-12">
+                  <form class="example-form form-container" [formGroup]="myForm" (ngSubmit)="register(myForm)" novalidate>
+                        <div class="form-group">
+                            <label >First Name</label>
+                              <input type="text" class="form-control" name="firstname" id="firstname" aria-describedby="" placeholder="First Name" formControlName="firstname">
+                          <span class="help-block form-error text-danger small" [hidden]="!(myForm.controls['firstname'].invalid && (myForm.controls['firstname'].dirty && myForm.controls['firstname'].touched))">
+                                <div class="span-validation" [hidden]="!myForm.controls['firstname'].errors?.required">First Name is required</div>
+                                <div class="span-validation"  [hidden]="!myForm.controls['firstname'].errors?.minlength">Min 3 Characters</div>
+                          </span>
+                        </div>
+                    <div class="form-group">
+                              <label >Last Name</label>
+                              <input type="text" class="form-control" name="lastname" aria-describedby="" placeholder="Last Name" formControlName="lastname">
+                      <span class="help-block form-error text-danger small" [hidden]="!(myForm.controls['lastname'].invalid && (myForm.controls['lastname'].dirty && myForm.controls['lastname'].touched))">
+                                <div class="span-validation"   [hidden]="!myForm.controls['lastname'].errors?.required">Last Name is required</div>
+                                <div class="span-validation"  [hidden]="!myForm.controls['lastname'].errors?.minlength">Min 2 Characters</div>
+                      </span>
+                    </div>
+                    <div class="form-group">
+                              <label >Email address</label>
+                            <input type="email" class="form-control" name="email" aria-describedby="" placeholder="Enter email" formControlName="email">
+                            <span class="help-block form-error text-danger small" [hidden]="!(myForm.controls['email'].invalid && (myForm.controls['email'].dirty && myForm.controls['email'].touched))">
+                              <div class="span-validation"  [hidden]="!myForm.controls['email'].errors?.required">Email is required</div>
+                              <div class="span-validation"  [hidden]="!myForm.controls['email'].errors?.pattern">Please enter a valid email</div>
+                            </span>
+                    </div>
+                    <div class="form-group">
+                      <label >Contact #</label>
+                      <input type="text" class="form-control" name="phoneno" aria-describedby="" placeholder="Enter phone number" formControlName="phoneno">
+                      <span class="help-block form-error text-danger small" [hidden]="!(myForm.controls['phoneno'].invalid && (myForm.controls['phoneno'].dirty && myForm.controls['phoneno'].touched))">
+                              <div class="span-validation"  [hidden]="!myForm.controls['phoneno'].errors?.required">Contact number is required</div>
+                              <div class="span-validation"  [hidden]="!(myForm.controls['phoneno'].errors?.minlength || myForm.controls['phoneno'].errors?.maxlength)">Please a 10 digit contact number</div>
+                              <div class="span-validation"  [hidden]="!myForm.controls['phoneno'].errors?.pattern">Please enter valid number Example - XXX-XXX-XXXX</div>
+                      </span>
+                    </div>
+                    <div class="form-group">
+                      <label>Course Options</label>
+                      <select class="form-control" name="course" formControlName="courseid">
+                        <option value="1">Financial Management</option>
+                        <option selected value="2">Business Operations</option>
+                        <option value='3'>Business Planning </option>
+                        <option value='4'>Coffee Roasting and retail</option>
+                      </select>
+                      <span class="help-block form-error text-danger small" [hidden]="!(myForm.controls['courseid'].invalid && (myForm.controls['courseid'].dirty && myForm.controls['courseid'].touched))">
+                              <div class="span-validation"  [hidden]="!myForm.controls['courseid'].errors?.required">Please select a course</div>
+                      </span>
+                    </div>
+
+                  <button type="submit" [disabled]="!myForm.valid" class="btn btn-primary btn-block">Submit</button>
+                  </form>
+
+                  </div>
+                </div>
+            </mat-card>
+
+
+    </mat-card>
+  </div>
+</div>
+

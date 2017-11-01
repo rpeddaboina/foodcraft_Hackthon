@@ -1,0 +1,48 @@
+/* My header*/
+
+.navbar-container{
+  background: #008592;
+  height: 90px;
+  border: 0px;
+  border-radius: 0px;
+}
+
+.wrapper {
+  width: 1170px;
+  padding: 0 0px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.foodCraft-img{
+  width:45%;
+  margin-top: 10px;
+}
+
+.logo_img{
+  width:30%;
+  float: left;
+}
+
+.menu-list{
+  width: 70%;
+  float: right;
+  top:10px;
+}
+
+.menu-list ul{
+  margin-top: 33px;
+}
+
+.menu-list ul li {
+  display: inline;
+  list-style: none;
+  padding: 6px;
+  color: #FFF;
+}
+
+.caret-space{
+  padding-left:10px ;
+}
+
+
