@@ -1,7 +1,12 @@
 <div class="bg-wrapper">
   <div class="wrapper">
     <mat-card class="card-style">
-      <div *ngIf="loaderFlag" style=" text-align: center;margin: 0 auto;padding-left: 31em;"><mat-spinner></mat-spinner></div>
+      <div *ngIf="loaderFlag" style=" text-align: center;margin: 0 auto;padding-left: 0em;"><div class="spinner"></div></div>
+      <div *ngIf="showErrorFlag" style=" text-align: center;margin: 0 auto;padding-left: 0em;">
+        <div class="alert alert-danger" role="alert">
+          <strong>Technical Error while submitting details. Please contact support.</strong>
+        </div>
+      </div>
         <section class="header">
               <h4>Please fill in the details below to sign up for the course of your choice.</h4>
         </section>

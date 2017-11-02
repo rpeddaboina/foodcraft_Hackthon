@@ -33,18 +33,25 @@ export class RegisterCourseComponent implements OnInit {
     console.log(myForm.value);
     this.registerService.storeRegistrationDetails(myForm.value)
       .subscribe((response)=>{
-          this.router.navigate(['/registration-confirmed']);
-          this.submitted = true;
-          this.clear();
-        },
+      console.log(response);
+          this.loaderFlag = false;
+      if(response.message == "Success"){
+        this.router.navigate(['/registration-confirmed']);
+      }
+      this.submitted = true;
+      this.clear();
+      },
         (error)=>{
+          console.log(error);
         this.showErrorFlag = true;
+        this.loaderFlag = false;
         setTimeout(()=>{
         this.showErrorFlag = false;
         this.clear();
-        },3000)
+        },4000)
       },()=>{
           this.loaderFlag = false;
+          this.showErrorFlag = false;
       })
   }
 
