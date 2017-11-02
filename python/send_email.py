@@ -9,7 +9,7 @@ def index():
 	em = EmailManager()
 	su = "Test mail from Hackathon"
 	bd = "Hi, this is a test mail."
-	em.send_email(su, ['rpeddaboina@paypal.com', 'sridhar.ka79@yahoo.com'], bd)
+	em.send_email(su, 'sridhar.ka79@yahoo.com', bd)
 	return "sent"
 
 if __name__ == '__main__':

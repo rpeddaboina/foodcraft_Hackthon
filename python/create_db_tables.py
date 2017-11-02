@@ -10,7 +10,6 @@ if dbManager.check_if_table_exists('User') is False:
 	qry = """CREATE TABLE User(Id INTEGER PRIMARY KEY, 
 			First_Name TEXT, Last_Name TEXT, 
 			Email_Id TEXT, Type SHORT);"""
-
 	dbManager.execute_query(qry)
 
 #Insert some Test data
@@ -29,14 +28,23 @@ if dbManager.fetch_all_rows('User') == []:
 # Check whether that table exists already
 if dbManager.check_if_table_exists('Courses') is False:
         qry = """CREATE TABLE Courses(Id INTEGER PRIMARY KEY,
-                        Name TEXT, Status INTEGER);"""
+                        Name TEXT, Image_File TEXT, Status INTEGER);"""
         dbManager.execute_query(qry)
 
 #Insert some Test data
 # Check whether there are any existing rows in this table
 if dbManager.fetch_all_rows('Courses') == []:
-        qry = """INSERT INTO Courses(Name, Status)
-                VALUES ("Course-1", 1);"""
+        qry = """INSERT INTO Courses(Name, Image_File, Status)
+                VALUES ("Financial Management", "FinancialManagement.png", 1);"""
+        dbManager.execute_query(qry)
+        qry = """INSERT INTO Courses(Name, Image_File, Status)
+                VALUES ("Business Operations", "BusinessOperations.png", 1);"""
+        dbManager.execute_query(qry)
+        qry = """INSERT INTO Courses(Name, Image_File, Status)
+                VALUES ("Business Planning", "BusinessPlanning.png", 1);"""
+        dbManager.execute_query(qry)
+        qry = """INSERT INTO Courses(Name, Image_File, Status)
+                VALUES ("Coffee Roasting", "CoffeeRoasting.png", 1);"""
         dbManager.execute_query(qry)
 
 # Create TrainingSessions table
