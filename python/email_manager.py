@@ -37,9 +37,9 @@ class EmailManager():
 		body = MIMEText('%s<p><img src="cid:myimage" /></p><p>%s</p>' %(hl, body),
 			 _subtype='html')
 		html_part.attach(body)
-                course_img_file = "images/" + course_img_file
-                img_data = open(course_img_file, "rb").read()
-                img = MIMEImage(img_data, name=os.path.basename(course_img_file))
+		course_img_file = "images/" + course_img_file
+		img_data = open(course_img_file, "rb").read()
+		img = MIMEImage(img_data, name=os.path.basename(course_img_file))
 		img.add_header('Content-Id', '<myimage>')  # angle brackets are important
 		img.add_header("Content-Disposition", "inline", filename=course_img_file) 
 		html_part.attach(img)

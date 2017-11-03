@@ -14,13 +14,13 @@ def send_email():
 	bd = "Hi, this is a test mail. Sent latest."
 	print("Sending email...")
 	em.send_email(su, 'sridhar.ka79@yahoo.com', bd)
-    	print("done.")
+	print("done.")
 	response = app.response_class(
                 response=json.dumps('Success'),
                 status=200,
                 mimetype='application/json'
         )
-        return response
+	return response
 
 
 def send_email_with_link(p_fname, p_lname, p_email, course_id, course_name, course_img_file):
@@ -64,4 +64,4 @@ def enroll_student():
 
 
 if __name__ == '__main__':
-   app.run(host='0.0.0.0', port=9099) #debug = True)
+   app.run(host='0.0.0.0', port=5000) #debug = True)
