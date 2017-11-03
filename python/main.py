@@ -12,9 +12,9 @@ def send_email():
 	em = EmailManager()
 	su = "Test mail from Hackathon"
 	bd = "Hi, this is a test mail. Sent latest."
-	print "Sending email..."
+	print("Sending email...")
 	em.send_email(su, 'sridhar.ka79@yahoo.com', bd)
-    	print "done."
+    	print("done.")
 	response = app.response_class(
                 response=json.dumps('Success'),
                 status=200,
@@ -26,20 +26,23 @@ def send_email():
 def send_email_with_link(p_fname, p_lname, p_email, course_id, course_name, course_img_file):
 	course_url = "https://meet.jit.si/cs%s" %course_id 
 	em = EmailManager()
-	text1 = "Dear %s %s,\n\nYou hav been successfully enrolled into the Course: %s." %(p_fname, p_lname, course_name)
-	text = "Please use the below details to join this session as per the schedule:\n"
-	text += "\n\t\tSchedule:\n\t\t\tDate: 11/10/2017\n\t\t\tStart Time: 2:00 PM PST"
-	text += "\n\t\t\tEnd Time:  3:00 PM PST\n\t\t\tMeeting url: %s" %course_url
-	text += "\n\nSee you in the classroom.\n\n"
-	text += "Thanks,\nFood Craft Team\n"
+	text1 = "<p>Dear %s %s,</p><p></p><p>You hav been successfully enrolled into the Course: %s</p>" %(p_fname, p_lname, course_name)
+	text = "<p></p><p>Please use the below details to join this session as per the Schedule:</p>"
+	#text += "<p>&emsp;&emsp;Schedule:</p><p></p><p>&emsp;&emsp;&emsp;Date: 11/10/2017</p><p>&emsp;&emsp;&emsp;Start Time: 2:00 PM PST</p>"
+	text += "<p></p><p>&emsp;&emsp;&emsp;Date: 11/10/2017</p><p>&emsp;&emsp;&emsp;Start Time: 2:00 PM PST</p>"
+	text += "<p>&emsp;&emsp;&emsp;End Time:  3:00 PM PST</p><p>&emsp;&emsp;&emsp;Meeting url: %s</p>" %course_url
+	text += "<p></p><p></p>See you in the classroom.<p></p><p></p>"
+	text += "<p>Thanks,</p><p>Food Craft Team</p>"
 	subj = "Enrollment to the course: %s" %course_name
-	rcpnt = [p_email]
+	rcpnt = p_email
 	em.send_email(subj, rcpnt, text1, text, course_img_file) 		
 	
 
-@app.route("/enroll", methods=['GET', 'POST'])
+@app.route("/enroll", methods=['POST'])
 def enroll_student():
+	print("request.data = ", request.data )
 	data = request.json
+	print("data = ", data)
 	course_id = data['courseid']
 	p_email = data['email']	
 	p_fname = data['firstname']

@@ -33,18 +33,20 @@ class EmailManager():
 		s.login(app.config['MAIL_USERNAME'], app.config['MAIL_PASSWORD'])
 
 		# Record the MIME types of both parts - text/plain and text/html.
-		part1 = MIMEText(hl, 'plain')
-		part2 = MIMEText(body, 'plain')
-
-		# Attach parts into message container.
-		# According to RFC 2046, the last part of a multipart message, in this case
-		# the HTML message, is best and preferred.
-		msg.attach(part1)
-		course_img_file = "images/" + course_img_file
-		img_data = open(course_img_file, "rb").read()
-		img = MIMEImage(img_data, name=os.path.basename(course_img_file))
-		msg.attach(img)
-		msg.attach(part2)
-
-		s.sendmail('FoodCraft', msg['To'], msg.as_string()) 
+		html_part = MIMEMultipart(_subtype='related')
+		body = MIMEText('%s<p><img src="cid:myimage" /></p><p>%s</p>' %(hl, body),
+			 _subtype='html')
+		html_part.attach(body)
+                course_img_file = "images/" + course_img_file
+                img_data = open(course_img_file, "rb").read()
+                img = MIMEImage(img_data, name=os.path.basename(course_img_file))
+		img.add_header('Content-Id', '<myimage>')  # angle brackets are important
+		img.add_header("Content-Disposition", "inline", filename=course_img_file) 
+		html_part.attach(img)
+		msg.attach(html_part)
+		if type(recepients) is list:
+			for rcpnt in recepients:
+				s.sendmail('FoodCraft', rcpnt, msg.as_string()) 
+		else:
+			s.sendmail('FoodCraft', recepients, msg.as_string())
 		s.quit()
