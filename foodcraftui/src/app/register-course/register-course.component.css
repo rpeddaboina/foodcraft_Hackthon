@@ -113,3 +113,25 @@ section.header{
         -webkit-transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
       }
 }
+
+@media only screen
+and (min-width : 1224px) {
+  /* STYLES GO HERE */
+}
+
+/* Large screens ----------- */
+@media only screen
+and (min-width : 1824px) {
+  .inner-card {
+    height: 55vh;
+    background: #fff;
+    top: 3em;
+    margin: 0 auto;
+    width: 29vw;
+  }
+
+  .card-style{
+    height: 85vh;
+  }
+
+}
