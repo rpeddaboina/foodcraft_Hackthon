@@ -23,8 +23,8 @@ def send_email():
 	return response
 
 
-def send_email_with_link(p_fname, p_lname, p_email, course_id, course_name, course_img_file):
-	course_url = "https://meet.jit.si/cs%s" %course_id 
+def send_email_with_link(p_fname, p_lname, p_email, course_id, course_name, course_url, course_img_file):
+	#course_url = "https://meet.jit.si/cs%s" %course_id 
 	em = EmailManager()
 	text1 = "<p>Dear %s %s,</p><p></p><p>You hav been successfully enrolled into the Course: %s</p>" %(p_fname, p_lname, course_name)
 	text = "<p></p><p>Please use the below details to join this session as per the Schedule:</p>"
@@ -53,7 +53,15 @@ def enroll_student():
 	course_details = dbm.execute_query(qry)
 	course_name = course_details[0][0]
 	course_img_file = course_details[0][1]
-	send_email_with_link(p_fname, p_lname, p_email, course_id, course_name, course_img_file)
+	course_url = {
+		'1': 'http://tinyurl.com/yc5omxjl',
+		'2': 'http://tinyurl.com/ya8st6uo',
+		'3': 'http://tinyurl.com/y92rul68',
+		'4': 'http://tinyurl.com/ya6cvm3j',
+	}
+
+	send_email_with_link(p_fname, p_lname, p_email, course_id, course_name, 
+		course_url[course_id], course_img_file)
 
 	response = app.response_class(
 		response=json.dumps('Success'),
